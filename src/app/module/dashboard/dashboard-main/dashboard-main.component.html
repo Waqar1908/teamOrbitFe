@@ -1,1 +1,31 @@
-<p>dashboard-main works!</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
+
+  <!-- Line Chart -->
+  <apx-chart
+    [series]="lineChart.series"
+    [chart]="lineChart.chart"
+    [xaxis]="lineChart.xaxis">
+  </apx-chart>
+
+  <!-- Bar Chart -->
+  <apx-chart
+    [series]="barChart.series"
+    [chart]="barChart.chart"
+    [xaxis]="barChart.xaxis">
+  </apx-chart>
+
+  <!-- Donut Chart -->
+  <apx-chart
+    [series]="donutChart.series"
+    [chart]="donutChart.chart"
+    [labels]="donutChart.labels">
+  </apx-chart>
+
+  <!-- Area Chart -->
+  <apx-chart
+    [series]="areaChart.series"
+    [chart]="areaChart.chart"
+    [xaxis]="areaChart.xaxis">
+  </apx-chart>
+
+</div>
