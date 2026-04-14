@@ -1,31 +1,91 @@
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
+<section class="px-2 md:px-6 lg:px-10 py-4">
 
-  <!-- Line Chart -->
-  <apx-chart
-    [series]="lineChart.series"
-    [chart]="lineChart.chart"
-    [xaxis]="lineChart.xaxis">
-  </apx-chart>
+  <div class="flex items-center justify-between py-5">
 
-  <!-- Bar Chart -->
-  <apx-chart
-    [series]="barChart.series"
-    [chart]="barChart.chart"
-    [xaxis]="barChart.xaxis">
-  </apx-chart>
+    <div>
+      <h1 class="text-2xl font-bold text-gray-800">
+        Welcome back, Admin! 👋
+      </h1>
+      <p class="text-sm text-gray-400 mt-1">
+        Here's what's happening with your company today.
+      </p>
+    </div>
 
-  <!-- Donut Chart -->
-  <apx-chart
-    [series]="donutChart.series"
-    [chart]="donutChart.chart"
-    [labels]="donutChart.labels">
-  </apx-chart>
-
-  <!-- Area Chart -->
-  <apx-chart
-    [series]="areaChart.series"
-    [chart]="areaChart.chart"
-    [xaxis]="areaChart.xaxis">
-  </apx-chart>
-
+   <div class="flex items-center gap-2 bg-white border border-gray-200 rounded-lg px-3 py-2 shadow-sm">
+  <!-- <i class="pi pi-calendar text-gray-400 text-sm"></i> -->
+  <input
+    type="date"
+    [value]="today"
+    class="text-sm text-gray-600 outline-none bg-transparent"
+  />
 </div>
+
+  </div>
+
+  <section>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-2">
+
+      @for (card of cards; track card.title) {
+        <div class="bg-white rounded-2xl shadow-sm px-5 py-4 flex items-center gap-4">
+
+          <div class="flex items-center justify-center w-12 h-12 rounded-xl"
+               [ngClass]="card.bg + ' ' + card.textColor">
+            <i class="pi text-xl px-3" [ngClass]="card.icon"></i>
+          </div>
+
+          <div class="flex flex-col justify-center">
+            <p class="text-gray-400 text-xs font-medium">
+              {{ card.title }}
+            </p>
+
+            <h2 class="text-xl font-semibold text-gray-800 leading-tight">
+              {{ card.value }}
+            </h2>
+
+            <div class="flex items-center gap-1 mt-1 text-xs font-medium"
+                 [ngClass]="card.isPositive ? 'text-green-500' : 'text-red-500'">
+
+              <span>{{ card.isPositive ? '↑' : '↓' }}</span>
+              <span>{{ card.changeValue }}</span>
+              <span class="text-gray-400 whitespace-nowrap">
+                {{ card.changeText }}
+              </span>
+
+            </div>
+          </div>
+
+        </div>
+      }
+
+    </div>
+  </section>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
+
+    <apx-chart
+      [series]="areaChart.series"
+      [chart]="areaChart.chart"
+      [xaxis]="areaChart.xaxis">
+    </apx-chart>
+
+    <apx-chart
+      [series]="barChart.series"
+      [chart]="barChart.chart"
+      [xaxis]="barChart.xaxis">
+    </apx-chart>
+
+    <apx-chart
+      [series]="lineChart.series"
+      [chart]="lineChart.chart"
+      [xaxis]="lineChart.xaxis">
+    </apx-chart>
+
+    <apx-chart
+      [series]="donutChart.series"
+      [chart]="donutChart.chart"
+      [labels]="donutChart.labels">
+    </apx-chart>
+
+  </div>
+
+</section>
