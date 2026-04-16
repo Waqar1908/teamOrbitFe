@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
-import { LoginComponent } from '../login/login.component';
-import { SignupComponent } from "../signup/signup.component";
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
-  imports: [LoginComponent, SignupComponent],
+  standalone: true,
+  imports: [RouterOutlet],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.css'
 })
-export class AuthComponent {
-
-}
+export class AuthComponent {}
