@@ -1,12 +1,6 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-<<<<<<< Updated upstream
-{
-    path:'',
-    loadComponent:()=> import('./module/auth/auth/auth.component').then(m=>m.AuthComponent)
-}
-=======
     {
         path: '',
         loadComponent: () => import('./module/auth/login/login.component').then(m => m.LoginComponent)
@@ -52,5 +46,4 @@ export const routes: Routes = [
             }
         ]
     }
->>>>>>> Stashed changes
 ];
