@@ -1,29 +1,76 @@
-/* Center paginator and give spacing */
-.p-paginator {
-  border-top: 1px solid #e5e7eb;
-  padding: 10px;
-  border-radius: 0 0 12px 12px;
+.custom-table .p-datatable-thead > tr > th {
+  border: none;
 }
 
-/* Make paginator look like box */
-.p-paginator .p-paginator-pages .p-paginator-page {
-  border-radius: 8px;
-  margin: 0 2px;
+.custom-table .p-datatable-tbody > tr > td {
+  border: none;
 }
 
-/* Header rounded corners */
-.custom-table .p-datatable-thead > tr > th:first-child {
-  border-top-left-radius: 12px;
+.custom-table .p-paginator {
+  border-top: 1px solid #f1f3f6;
+  padding: 6px 10px;
 }
 
-.custom-table .p-datatable-thead > tr > th:last-child {
-  border-top-right-radius: 12px;
+/* MAIN BOX */
+.custom-dropdown .p-dropdown {
+  height: 34px !important;
+  border-radius: 9999px;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  box-shadow: none;
 }
 
-:host ::ng-deep .pi-pencil {
-  color: #3b82f6 !important; /* blue */
+/* LABEL TEXT */
+.custom-dropdown .p-dropdown-label {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #374151;
+  padding: 0;
 }
 
-:host ::ng-deep .pi-trash {
-  color: #ef4444 !important; /* red */
+/* RIGHT ICON */
+.custom-dropdown .p-dropdown-trigger {
+  width: auto;
+  padding-left: 6px;
+  display: flex;
+  align-items: center;
+}
+
+.custom-dropdown .p-dropdown-trigger-icon {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+/* REMOVE DEFAULT EXTRA SPACE */
+.custom-dropdown .p-dropdown-clear-icon {
+  display: none;
+}
+
+/* DROPDOWN PANEL (THIS FIXES SHAPE ISSUE) */
+.p-dropdown-panel {
+  border-radius: 10px !important;
+  border: 1px solid #e5e7eb;
+  margin-top: 6px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+/* ITEMS */
+.p-dropdown-item {
+  font-size: 12px;
+  padding: 8px 12px;
+}
+
+/* HOVER */
+.p-dropdown-item:hover {
+  background: #f3f4f6;
+}
+
+/* SELECTED */
+.p-dropdown-item.p-highlight {
+  background: #eef2ff;
+  color: #3730a3;
 }

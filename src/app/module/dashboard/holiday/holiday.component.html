@@ -1,54 +1,91 @@
-<div class="flex justify-center items-center min-h-screen bg-gray-100">
+<div class="bg-[#f4f6fb] p-5 min-h-screen">
 
-  <div class="bg-white shadow-xl rounded-2xl p-6 w-[85%]">
+  <!-- Header -->
+  <div class="flex justify-between items-center mb-4">
+    <div>
+      <h2 class="text-[18px] font-semibold text-[#2b2f38]">Holiday</h2>
+      <p class="text-[12px] text-[#8b909a] mt-1">
+        Manage company holidays. Add, edit, or remove holidays.
+      </p>
+    </div>
 
-    <h2 class="text-xl font-semibold mb-4 text-gray-700">
-      Holiday List
-    </h2>
+    <!-- WHITE PILL BUTTON -->
+ <button pButton label="+ Add Holiday"
+  class="!bg-[#3b82f6] !text-white !border-none !rounded-full !px-4 !h-[34px] !text-[12px]">
+</button>
+  </div>
 
-    <p-table 
-      [value]="holidays" 
+  <div class="flex justify-between items-center mb-3">
+
+  <!-- LEFT: SEARCH -->
+  <div class="relative w-[260px]">
+    <i class="pi pi-search absolute left-3 top-1/2 -translate-y-1/2 text-[12px] text-gray-400"></i>
+    <input pInputText [(ngModel)]="searchText"
+      placeholder="Search holidays..."
+      class="w-full h-[34px] pl-8 pr-3 text-[12px] bg-white text-gray-600 placeholder-gray-400 border border-[#e5e7eb] rounded-full focus:outline-none focus:ring-1 focus:ring-blue-400" />
+  </div>
+
+  <!-- RIGHT: YEAR + FILTER -->
+  <div class="flex items-center gap-2">
+
+ <p-dropdown
+  [options]="years"
+  [(ngModel)]="selectedYear"
+  class="custom-dropdown w-[110px]"
+  appendTo="body">
+</p-dropdown>
+
+    <button pButton label="Filter"
+      class="!bg-white !border !border-[#e5e7eb] !rounded-full !px-4 !h-[34px] !text-[12px] !text-gray-600">
+    </button>
+
+  </div>
+
+</div>
+
+  <!-- TABLE -->
+  <div class="bg-white border border-[#e6e9ef] rounded-lg overflow-hidden">
+
+    <p-table
+      [value]="filteredHolidays"
+      [rows]="8"
       [paginator]="true"
-      [rows]="5"
-      class="p-datatable-striped p-datatable-gridlines custom-table"
-      [tableStyle]="{ 'min-width': '100%' }">
+      styleClass="custom-table">
 
       <!-- HEADER -->
       <ng-template pTemplate="header">
-        <tr class="bg-blue-600 text-white">
-          <th class="p-3 text-left">Holiday</th>
-          <th class="p-3 text-left">Date</th>
-          <th class="p-3 text-left">Day</th>
-          <th class="p-3 text-center">Action</th>
+        <tr class="bg-[#f1f3f6] text-[12px] text-[#6b7280]">
+          <th class="px-4 py-3 font-medium">Holiday Name</th>
+          <th class="px-4 py-3 font-medium">Date</th>
+          <th class="px-4 py-3 font-medium">Day</th>
+          <th class="px-4 py-3 font-medium">Description</th>
+          <th class="px-4 py-3 text-center font-medium">Actions</th>
         </tr>
       </ng-template>
 
       <!-- BODY -->
       <ng-template pTemplate="body" let-holiday>
-        <tr class="hover:bg-gray-100 transition">
-          <td class="p-3 font-medium">{{ holiday.occasion }}</td>
-          <td class="p-3">{{ holiday.date | date:'dd MMM yyyy' }}</td>
-          <td class="p-3">{{ getDay(holiday.date) }}</td>
+        <tr class="text-[13px] text-[#374151] border-t border-[#f1f3f6]">
 
-          <td class="p-3 flex justify-center gap-3">
-
-            <!-- EDIT (BLUE) -->
-            <button 
-              pButton 
-              icon="pi pi-pencil" 
-              class="p-button-rounded p-button-text p-button-primary"
-              (click)="onEdit(holiday)">
-            </button>
-
-            <!-- DELETE (RED) -->
-            <button 
-              pButton 
-              icon="pi pi-trash" 
-              class="p-button-rounded p-button-text p-button-danger"
-              (click)="onDelete(holiday.id)">
-            </button>
-
+          <td class="px-4 py-2 flex items-center gap-2">
+            <div class="w-6 h-6 rounded-full bg-[#eef2ff] flex items-center justify-center text-[11px]">
+              {{ holiday.icon }}
+            </div>
+            <span class="font-medium">{{ holiday.name }}</span>
           </td>
+
+          <td class="px-4 py-2">{{ holiday.date | date:'MMM dd, yyyy' }}</td>
+          <td class="px-4 py-2">{{ holiday.day }}</td>
+          <td class="px-4 py-2 text-[#6b7280]">{{ holiday.description }}</td>
+
+          <td class="px-4 py-2 text-center">
+            <button pButton icon="pi pi-pencil"
+              class="p-button-text !text-blue-500 !w-7 !h-7"></button>
+
+            <button pButton icon="pi pi-trash"
+              class="p-button-text !text-red-500 !w-7 !h-7"></button>
+          </td>
+
         </tr>
       </ng-template>
 

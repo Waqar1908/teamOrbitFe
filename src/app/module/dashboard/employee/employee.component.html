@@ -1,1 +1,124 @@
-<p>employee works!</p>
+<div class="p-6 bg-gray-50 min-h-screen">
+
+  <!-- Header -->
+  <div class="flex items-center justify-between mb-6">
+    <div>
+      <h2 class="text-2xl font-semibold">Employees</h2>
+      <p class="text-gray-500 text-sm">
+        Manage and view all employee information in one place.
+      </p>
+    </div>
+
+    <div class="flex gap-3">
+      <button pButton type="button" label="Export" icon="pi pi-download"
+        class="p-button-outlined"></button>
+
+      <button pButton type="button" label="Add Employee" icon="pi pi-plus"
+        class="p-button-primary"></button>
+    </div>
+  </div>
+
+  <!-- Filters -->
+  <div class="bg-white p-4 rounded-xl shadow-sm mb-4 flex flex-wrap gap-3 items-center">
+
+    <span class="p-input-icon-left w-72">
+      <i class="pi pi-search"></i>
+      <input pInputText type="text" placeholder="Search by name, email, or employee ID..." />
+    </span>
+
+    <p-dropdown [options]="statuses" placeholder="Status: All" class="w-44"></p-dropdown>
+
+    <p-dropdown [options]="departments" placeholder="Department: All" class="w-52"></p-dropdown>
+
+    <button pButton type="button" label="More Filters"
+      icon="pi pi-filter" class="p-button-text"></button>
+
+    <button pButton icon="pi pi-calendar" class="p-button-text"></button>
+
+  </div>
+
+  <!-- Table -->
+  <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+
+    <p-table
+      [value]="employees"
+      [paginator]="true"
+      [rows]="8"
+      responsiveLayout="scroll"
+      class="p-datatable-sm"
+    >
+
+      <!-- Header -->
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 3rem">
+            <p-checkbox></p-checkbox>
+          </th>
+          <th>Employee</th>
+          <th>Employee ID</th>
+          <th>Email</th>
+          <th>Role / Position</th>
+          <th>Status</th>
+          <th>Joining Date</th>
+          <th class="text-center">Actions</th>
+        </tr>
+      </ng-template>
+
+      <!-- Body -->
+      <ng-template pTemplate="body" let-emp>
+        <tr>
+
+          <td>
+            <p-checkbox></p-checkbox>
+          </td>
+
+          <!-- Employee -->
+          <td>
+            <div class="flex items-center gap-3">
+              <img [src]="emp.avatar" class="w-9 h-9 rounded-full" />
+              <div>
+                <p class="font-medium">{{ emp.name }}</p>
+                <p class="text-xs text-gray-500">{{ emp.department }}</p>
+              </div>
+            </div>
+          </td>
+
+          <td>{{ emp.id }}</td>
+          <td>{{ emp.email }}</td>
+
+          <!-- Role -->
+          <td>
+            <span class="px-3 py-1 rounded-full text-xs font-medium"
+              [ngClass]="roleClass(emp.role)">
+              {{ emp.role }}
+            </span>
+          </td>
+
+          <!-- Status -->
+          <td>
+            <span
+              class="flex items-center gap-2 text-sm font-medium"
+              [ngClass]="emp.status === 'Active' ? 'text-green-600' : 'text-red-500'"
+            >
+              <span class="w-2 h-2 rounded-full"
+                [ngClass]="emp.status === 'Active' ? 'bg-green-500' : 'bg-red-500'">
+              </span>
+              {{ emp.status }}
+            </span>
+          </td>
+
+          <td>{{ emp.joiningDate }}</td>
+
+          <!-- Actions -->
+          <td class="text-center">
+            <button pButton icon="pi pi-pencil" class="p-button-text p-button-sm"></button>
+            <button pButton icon="pi pi-trash" class="p-button-text p-button-danger p-button-sm"></button>
+          </td>
+
+        </tr>
+      </ng-template>
+
+    </p-table>
+  </div>
+
+</div>

@@ -1,1 +1,135 @@
-<p>setting works!</p>
+<div class="bg-[#f4f6fb] p-4 min-h-screen">
+
+  <!-- HEADER -->
+  <div class="mb-3">
+    <h2 class="text-[18px] font-semibold text-[#2b2f38]">
+      Settings
+    </h2>
+    <p class="text-[12px] text-[#8b909a] mt-1">
+      Manage your account and preferences
+    </p>
+  </div>
+
+  <!-- MAIN CONTAINER -->
+  <div class="flex gap-4">
+
+    <!-- SIDEBAR -->
+    <div class="w-[240px] bg-white border border-[#e6e9ef] rounded-lg p-2">
+
+      @for (item of menu; track item.key) {
+
+        <div
+          (click)="activeTab = item.key"
+          class="flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer text-[13px] transition"
+          [ngClass]="activeTab === item.key 
+            ? 'bg-blue-50 text-blue-600 font-medium' 
+            : 'text-gray-600 hover:bg-gray-100'">
+
+          <i [class]="item.icon + ' text-[14px]'"></i>
+          <span>{{ item.label }}</span>
+
+        </div>
+
+      }
+
+    </div>
+
+    <!-- CONTENT -->
+    <div class="flex-1 bg-white border border-[#e6e9ef] rounded-lg p-5">
+
+      <!-- PROFILE -->
+      @if (activeTab === 'profile') {
+
+        <div class="max-w-[600px]">
+
+          <h3 class="text-[14px] font-medium mb-4 text-[#111827]">
+            Profile Information
+          </h3>
+
+          <!-- FORM -->
+          <div class="grid grid-cols-2 gap-4">
+
+            <div>
+              <label class="text-[11px] text-gray-500 mb-1 block">Full Name</label>
+              <input type="text"
+                class="w-full border border-[#e5e7eb] rounded-md px-3 h-[36px] text-[13px] focus:outline-none focus:border-blue-500">
+            </div>
+
+            <div>
+              <label class="text-[11px] text-gray-500 mb-1 block">Email</label>
+              <input type="email"
+                class="w-full border border-[#e5e7eb] rounded-md px-3 h-[36px] text-[13px] focus:outline-none focus:border-blue-500">
+            </div>
+
+          </div>
+
+          <!-- BUTTON -->
+          <div class="mt-4">
+            <button
+              class="bg-blue-600 text-white px-5 h-[36px] rounded-md text-[13px] hover:bg-blue-700 transition">
+              Save Changes
+            </button>
+          </div>
+
+        </div>
+
+      }
+
+      <!-- SECURITY -->
+      @if (activeTab === 'security') {
+
+        <div class="max-w-[500px]">
+
+          <h3 class="text-[14px] font-medium mb-4">
+            Security Settings
+          </h3>
+
+          <div class="space-y-3">
+
+            <input type="password" placeholder="Current Password"
+              class="w-full border border-[#e5e7eb] rounded-md px-3 h-[36px] text-[13px]">
+
+            <input type="password" placeholder="New Password"
+              class="w-full border border-[#e5e7eb] rounded-md px-3 h-[36px] text-[13px]">
+
+          </div>
+
+          <button
+            class="mt-4 bg-blue-600 text-white px-5 h-[36px] rounded-md text-[13px]">
+            Update Password
+          </button>
+
+        </div>
+
+      }
+
+      <!-- NOTIFICATIONS -->
+      @if (activeTab === 'notifications') {
+
+        <div class="max-w-[500px]">
+
+          <h3 class="text-[14px] font-medium mb-4">
+            Notification Preferences
+          </h3>
+
+          <div class="space-y-3 text-[13px] text-gray-600">
+
+            <label class="flex items-center gap-2">
+              <input type="checkbox"> Email Notifications
+            </label>
+
+            <label class="flex items-center gap-2">
+              <input type="checkbox"> SMS Alerts
+            </label>
+
+          </div>
+
+        </div>
+
+      }
+
+    </div>
+
+  </div>
+
+</div>

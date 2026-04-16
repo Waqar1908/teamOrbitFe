@@ -1,56 +1,48 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
-import { CommonModule, DatePipe } from '@angular/common';
-
-interface Holiday {
-  id: number;
-  occasion: string;
-  date: string;
-}
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-holiday',
-  standalone: true, // ✅ IMPORTANT for Angular 19
-  imports: [CommonModule, TableModule, ButtonModule, DatePipe],
-  templateUrl: './holiday.component.html',
-  styleUrls: ['./holiday.component.scss'] // ✅ FIX (was styleUrl ❌)
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    TableModule,
+    ButtonModule,
+    DropdownModule,
+    InputTextModule
+  ],
+  templateUrl: './holiday.component.html'
 })
 export class HolidayComponent {
 
-holidays: Holiday[] = [
-  { id: 1, occasion: 'New Year', date: '2026-01-01' },
-  { id: 2, occasion: 'Republic Day', date: '2026-01-26' },
-  { id: 3, occasion: 'Maha Shivratri', date: '2026-02-15' },
-  { id: 4, occasion: 'Holi', date: '2026-03-14' },
-  { id: 5, occasion: 'Ram Navami', date: '2026-03-30' },
-  { id: 6, occasion: 'Good Friday', date: '2026-04-03' },
-  { id: 7, occasion: 'Eid-ul-Fitr', date: '2026-04-01' },
-  { id: 8, occasion: 'Labour Day', date: '2026-05-01' },
-  { id: 9, occasion: 'Bakrid (Eid-ul-Adha)', date: '2026-06-07' },
-  { id: 10, occasion: 'Independence Day', date: '2026-08-15' },
-  { id: 11, occasion: 'Janmashtami', date: '2026-08-25' },
-  { id: 12, occasion: 'Gandhi Jayanti', date: '2026-10-02' },
-  { id: 13, occasion: 'Dussehra', date: '2026-10-20' },
-  { id: 14, occasion: 'Diwali', date: '2026-11-08' },
-  { id: 15, occasion: 'Christmas', date: '2026-12-25' }
-];
+  searchText = '';
+  selectedYear = '2024';
 
-  // ✅ Get Day Name from Date
-  getDay(date: string): string {
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    return days[new Date(date).getDay()];
+  years = [
+    { label: '2024', value: '2024' },
+    { label: '2025', value: '2025' }
+  ];
+
+  holidays = [
+    { name: 'New Year', date: new Date('2024-01-01'), day: 'Monday', description: 'New Year Celebration', icon: '🎉' },
+    { name: 'Republic Day', date: new Date('2024-01-26'), day: 'Friday', description: 'National Holiday', icon: '🇮🇳' },
+    { name: 'Holi', date: new Date('2024-03-25'), day: 'Monday', description: 'Festival of Colors', icon: '🎨' },
+    { name: 'Good Friday', date: new Date('2024-03-29'), day: 'Friday', description: 'Religious Holiday', icon: '✝️' },
+    { name: 'Independence Day', date: new Date('2024-08-15'), day: 'Thursday', description: 'National Holiday', icon: '🇮🇳' },
+    { name: 'Gandhi Jayanti', date: new Date('2024-10-02'), day: 'Wednesday', description: 'Remembering Gandhi Ji', icon: '🕊️' },
+    { name: 'Diwali', date: new Date('2024-11-01'), day: 'Friday', description: 'Festival of Lights', icon: '🪔' },
+    { name: 'Christmas', date: new Date('2024-12-25'), day: 'Wednesday', description: 'Christmas Celebration', icon: '🎄' }
+  ];
+
+  get filteredHolidays() {
+    return this.holidays.filter(h =>
+      h.name.toLowerCase().includes(this.searchText.toLowerCase())
+    );
   }
-
-  // ✅ Edit Action
-  onEdit(holiday: Holiday) {
-    console.log('Edit:', holiday);
-    // 👉 next: open dialog / form
-  }
-
-  // ✅ Delete Action
-  onDelete(id: number) {
-    this.holidays = this.holidays.filter(h => h.id !== id);
-  }
-
 }
