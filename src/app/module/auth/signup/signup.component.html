@@ -1,1 +1,270 @@
-<p>signup works!</p>
+<div class="auth-wrapper">
+
+  <!-- LEFT PANEL -->
+  <div class="left-panel">
+    <div class="left-content">
+      <!-- Logo -->
+      <div class="brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="20" fill="rgba(255,255,255,0.2)"/>
+            <path d="M12 26 L20 14 L28 26" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="20" cy="12" r="3" fill="white"/>
+          </svg>
+        </div>
+        <span class="brand-name">TeamOrbit</span>
+      </div>
+
+      <!-- Admin illustration -->
+      <div class="illustration">
+        <svg viewBox="0 0 380 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background shapes -->
+          <circle cx="190" cy="150" r="130" fill="rgba(255,255,255,0.04)"/>
+          <circle cx="190" cy="150" r="95" fill="rgba(255,255,255,0.05)"/>
+
+          <!-- Large monitor -->
+          <rect x="90" y="60" width="200" height="135" rx="10" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+          <rect x="98" y="68" width="184" height="119" rx="6" fill="rgba(255,255,255,0.08)"/>
+          <!-- Monitor stand -->
+          <rect x="178" y="195" width="24" height="28" rx="3" fill="rgba(255,255,255,0.25)"/>
+          <rect x="155" y="220" width="70" height="8" rx="4" fill="rgba(255,255,255,0.3)"/>
+
+          <!-- Dashboard on screen -->
+          <rect x="105" y="75" width="80" height="50" rx="4" fill="rgba(255,255,255,0.12)"/>
+          <rect x="108" y="78" width="74" height="8" rx="2" fill="rgba(255,255,255,0.4)"/>
+          <rect x="108" y="90" width="40" height="6" rx="2" fill="rgba(255,255,255,0.25)"/>
+          <rect x="108" y="100" width="55" height="6" rx="2" fill="rgba(255,255,255,0.2)"/>
+          <rect x="108" y="110" width="30" height="6" rx="2" fill="rgba(255,255,255,0.2)"/>
+
+          <!-- Chart on screen right -->
+          <rect x="195" y="75" width="80" height="50" rx="4" fill="rgba(255,255,255,0.12)"/>
+          <polyline points="200,118 210,105 222,112 234,95 246,100 258,88 268,95" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M200 118 L210 105 L222 112 L234 95 L246 100 L258 88 L268 95 L268 120 L200 120Z" fill="rgba(255,255,255,0.1)"/>
+
+          <!-- Bottom screen row -->
+          <rect x="105" y="132" width="55" height="14" rx="4" fill="rgba(255,255,255,0.1)"/>
+          <rect x="107" y="135" width="30" height="4" rx="2" fill="rgba(255,255,255,0.4)"/>
+          <rect x="107" y="141" width="50" height="3" rx="1" fill="rgba(255,255,255,0.2)"/>
+
+          <rect x="168" y="132" width="55" height="14" rx="4" fill="rgba(255,255,255,0.1)"/>
+          <rect x="170" y="135" width="30" height="4" rx="2" fill="rgba(255,255,255,0.4)"/>
+          <rect x="170" y="141" width="48" height="3" rx="1" fill="rgba(255,255,255,0.2)"/>
+
+          <rect x="231" y="132" width="50" height="14" rx="4" fill="rgba(255,255,255,0.1)"/>
+          <rect x="233" y="135" width="25" height="4" rx="2" fill="rgba(255,255,255,0.4)"/>
+          <rect x="233" y="141" width="40" height="3" rx="1" fill="rgba(255,255,255,0.2)"/>
+
+          <!-- Admin person (centered below monitor) -->
+          <!-- Head -->
+          <circle cx="190" cy="262" r="18" fill="#FDDCB5"/>
+          <!-- Hair -->
+          <path d="M172 256 Q176 240 190 238 Q204 240 208 256" fill="#2D1B0E"/>
+          <!-- Shoulders / blazer -->
+          <path d="M164 290 Q164 275 190 272 Q216 275 216 290" fill="#1E3A5F" stroke="#1E3A5F" stroke-width="1"/>
+          <!-- Tie/collar -->
+          <rect x="186" y="272" width="8" height="18" fill="white"/>
+          <path d="M186 272 L184 280 L190 285 L196 280 L194 272" fill="#E74C3C"/>
+
+          <!-- Shield badge (admin icon) -->
+          <g transform="translate(48, 220)">
+            <path d="M20 5 L35 11 L35 22 Q35 32 20 38 Q5 32 5 22 L5 11 Z" fill="rgba(255,255,255,0.25)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+            <polyline points="13,22 18,27 27,16" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </g>
+
+          <!-- Key icon (right) -->
+          <g transform="translate(290, 215)">
+            <circle cx="18" cy="18" r="10" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+            <line x1="24" y1="24" x2="36" y2="36" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="32" y1="32" x2="32" y2="38" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="28" y1="35" x2="28" y2="40" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"/>
+          </g>
+
+          <!-- Floating card: Team Members -->
+          <rect x="18" y="60" width="78" height="48" rx="8" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <text x="27" y="78" font-size="7.5" fill="white" font-family="sans-serif" font-weight="600">Team Members</text>
+          <circle cx="30" cy="90" r="6" fill="rgba(255,255,255,0.35)"/>
+          <circle cx="42" cy="90" r="6" fill="rgba(255,255,255,0.35)"/>
+          <circle cx="54" cy="90" r="6" fill="rgba(255,255,255,0.35)"/>
+          <text x="64" y="94" font-size="8" fill="rgba(255,255,255,0.7)" font-family="sans-serif">+12</text>
+
+          <!-- Floating card: Tasks -->
+          <rect x="284" y="55" width="78" height="48" rx="8" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <text x="293" y="73" font-size="7.5" fill="white" font-family="sans-serif" font-weight="600">Tasks Done</text>
+          <text x="293" y="90" font-size="18" fill="white" font-family="sans-serif" font-weight="700">87%</text>
+
+          <!-- Decorative dots -->
+          <circle cx="30" cy="170" r="4" fill="rgba(255,255,255,0.3)"/>
+          <circle cx="350" cy="90" r="5" fill="rgba(255,255,255,0.25)"/>
+          <circle cx="60" cy="30" r="3" fill="rgba(255,255,255,0.2)"/>
+          <circle cx="320" cy="280" r="4" fill="rgba(255,255,255,0.2)"/>
+        </svg>
+      </div>
+
+      <h2 class="left-heading">Admin Registration</h2>
+      <p class="left-subtext">Set up your organization account and start managing your team with full control.</p>
+
+      <div class="dots">
+        <span class="dot"></span>
+        <span class="dot active"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="right-panel">
+
+    <div class="top-nav">
+      <a routerLink="/" class="nav-btn outline">Log in</a>
+      <button class="nav-btn active">Sign Up</button>
+    </div>
+
+    <div class="form-container">
+      <h1 class="form-title">Create Admin Account <span class="wave">:)</span></h1>
+      <p class="form-subtitle">
+        Register your organization account to access the full admin dashboard and team management tools.
+      </p>
+
+      <!-- Badge -->
+      <div class="admin-badge">
+        <i class="pi pi-shield"></i>
+        <span>Administrator Account</span>
+      </div>
+
+      <form (ngSubmit)="onRegister()">
+
+        <!-- Row 1: Full Name + Company Name -->
+        <div class="field-row">
+          <div class="field-wrap">
+            <label class="field-label">Full Name</label>
+            <div class="input-group">
+              <i class="pi pi-user input-icon"></i>
+              <input
+                type="text"
+                [(ngModel)]="fullName"
+                name="fullName"
+                placeholder="John Smith"
+                class="field-input"
+                required
+              />
+            </div>
+          </div>
+          <div class="field-wrap">
+            <label class="field-label">Company Name</label>
+            <div class="input-group">
+              <i class="pi pi-building input-icon"></i>
+              <input
+                type="text"
+                [(ngModel)]="companyName"
+                name="companyName"
+                placeholder="Acme Corp"
+                class="field-input"
+                required
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2: Email + Phone -->
+        <div class="field-row">
+          <div class="field-wrap">
+            <label class="field-label">Email Address</label>
+            <div class="input-group">
+              <i class="pi pi-envelope input-icon"></i>
+              <input
+                type="email"
+                [(ngModel)]="email"
+                name="email"
+                placeholder="admin&#64;company.com"
+                class="field-input"
+                required
+              />
+              <i class="pi pi-check-circle valid-icon" *ngIf="email.includes('@')"></i>
+            </div>
+          </div>
+          <div class="field-wrap">
+            <label class="field-label">Phone Number</label>
+            <div class="input-group">
+              <i class="pi pi-phone input-icon"></i>
+              <input
+                type="tel"
+                [(ngModel)]="phone"
+                name="phone"
+                placeholder="+1 (555) 000-0000"
+                class="field-input"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 3: Password + Confirm Password -->
+        <div class="field-row">
+          <div class="field-wrap">
+            <label class="field-label">Password</label>
+            <div class="input-group">
+              <i class="pi pi-lock input-icon"></i>
+              <input
+                [type]="showPassword ? 'text' : 'password'"
+                [(ngModel)]="password"
+                name="password"
+                placeholder="••••••••••"
+                class="field-input"
+                required
+              />
+              <i
+                class="pi toggle-pw"
+                [class.pi-eye]="!showPassword"
+                [class.pi-eye-slash]="showPassword"
+                (click)="togglePassword()"
+              ></i>
+            </div>
+          </div>
+          <div class="field-wrap">
+            <label class="field-label">Confirm Password</label>
+            <div class="input-group">
+              <i class="pi pi-lock input-icon"></i>
+              <input
+                [type]="showConfirm ? 'text' : 'password'"
+                [(ngModel)]="confirmPassword"
+                name="confirmPassword"
+                placeholder="••••••••••"
+                class="field-input"
+                required
+              />
+              <i
+                class="pi toggle-pw"
+                [class.pi-check-circle]="passwordMatch"
+                [class.pi-eye]="!showConfirm && !passwordMatch"
+                [class.pi-eye-slash]="showConfirm && !passwordMatch"
+                [style.color]="passwordMatch ? '#22c55e' : ''"
+                (click)="!passwordMatch && toggleConfirm()"
+              ></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terms -->
+        <div class="terms-row">
+          <label class="terms-label">
+            <input type="checkbox" [(ngModel)]="agreeTerms" name="agreeTerms" class="terms-check" required />
+            <span>I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="terms-link">Privacy Policy</a></span>
+          </label>
+        </div>
+
+        <!-- Register button -->
+        <button type="submit" class="btn-register" [disabled]="!agreeTerms">
+          <i class="pi pi-user-plus"></i>
+          Create Admin Account
+        </button>
+
+        <!-- Login link -->
+        <p class="login-link-text">
+          Already have an account?
+          <a routerLink="/" class="login-link">Sign in here</a>
+        </p>
+
+      </form>
+    </div>
+  </div>
+
+</div>

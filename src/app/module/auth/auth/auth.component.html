@@ -1,5 +1,8 @@
-<app-login></app-login>
 
-<!-- sign up -->
-
+@if (isLogin==true) {
+    <app-login></app-login>
+}
+@else{
 <app-signup></app-signup>
+}
+

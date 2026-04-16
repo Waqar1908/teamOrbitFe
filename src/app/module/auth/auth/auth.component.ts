@@ -10,4 +10,6 @@ import { SignupComponent } from "../signup/signup.component";
 })
 export class AuthComponent {
 
+  isLogin=true
+
 }
