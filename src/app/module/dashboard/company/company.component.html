@@ -1,1 +1,197 @@
-<p>company works!</p>
+<form [formGroup]="companyForm" class="p-6 bg-[#f5f7fb] min-h-screen">
+
+  <!-- HEADER -->
+  <div class="flex justify-between items-center mb-6">
+    <div>
+      <h1 class="text-2xl font-semibold text-[#1f2937]">Company Details</h1>
+      <p class="text-sm text-gray-500">View and manage your company information.</p>
+    </div>
+
+    <button type="button" (click)="toggleEdit()"
+      class="bg-blue-600 hover:bg-blue-700 transition text-white px-4 py-2 rounded-lg shadow-sm">
+      {{ isEdit ? 'Save Changes' : 'Edit Company' }}
+    </button>
+  </div>
+
+  <!-- COMPANY HEADER CARD -->
+  <div class="bg-white rounded-xl shadow-sm border border-[#e6e9ef] p-6 mb-6 flex items-center gap-5">
+
+    <div class="w-20 h-20 rounded-xl bg-blue-50 flex items-center justify-center">
+      <div class="w-12 h-12 bg-blue-600 rounded-full"></div>
+    </div>
+
+    <div class="flex-1">
+
+      <div class="flex items-center gap-2">
+
+        @if (isEdit) {
+          <input formControlName="name"
+            class="text-xl font-semibold border-b border-gray-300 outline-none focus:border-blue-500">
+        } @else {
+          <h2 class="text-xl font-semibold text-[#111827]">
+            {{ companyForm.value.name }}
+          </h2>
+        }
+
+        <span class="text-green-500 text-sm">✔</span>
+
+        <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full">
+          {{ companyForm.value.industry }}
+        </span>
+
+      </div>
+
+      <div class="mt-2 text-sm text-gray-500">
+        Company Code: {{ companyForm.value.code }}
+      </div>
+
+      <div class="mt-3 flex gap-6 text-sm text-gray-500">
+        <span>{{ companyForm.value.email }}</span>
+        <span>{{ companyForm.value.phone }}</span>
+        <span>{{ companyForm.value.website }}</span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- MAIN GRID -->
+  <div class="grid grid-cols-2 gap-6 mb-6">
+
+    <!-- COMPANY INFO -->
+    <div class="bg-white rounded-xl shadow-sm border border-[#e6e9ef] p-6">
+
+      <h3 class="font-semibold text-gray-700 mb-5">Company Information</h3>
+
+      <div class="space-y-5">
+
+        @for (item of companyInfo; track item.key) {
+
+          <div class="flex items-center justify-between border-b border-[#f1f3f6] pb-3">
+
+            <div class="flex items-center gap-3 text-gray-600">
+              <div class="w-8 h-8 bg-blue-50 rounded-md flex items-center justify-center">
+                <span class="text-blue-500 text-sm">{{ item.icon }}</span>
+              </div>
+              <span class="text-sm">{{ item.label }}</span>
+            </div>
+
+            @if (isEdit) {
+              <input [formControlName]="item.key"
+                class="border-b border-gray-300 outline-none text-right text-sm w-40 focus:border-blue-500">
+            } @else {
+              <span class="text-sm text-gray-800">
+                {{ companyForm.value[item.key] }}
+              </span>
+            }
+
+          </div>
+
+        }
+
+      </div>
+
+    </div>
+
+    <!-- COMPANY OVERVIEW -->
+    <div class="bg-white rounded-xl shadow-sm border border-[#e6e9ef] p-6">
+
+      <h3 class="font-semibold text-gray-700 mb-5">Company Overview</h3>
+
+      <div class="space-y-5">
+
+        @for (item of overviewInfo; track item.key) {
+
+          <div class="flex items-center justify-between border-b border-[#f1f3f6] pb-3">
+
+            <div class="flex items-center gap-3 text-gray-600">
+              <div class="w-8 h-8 bg-blue-50 rounded-md flex items-center justify-center">
+                <span class="text-blue-500 text-sm">{{ item.icon }}</span>
+              </div>
+              <span class="text-sm">{{ item.label }}</span>
+            </div>
+
+            @if (isEdit) {
+              <input [formControlName]="item.key"
+                class="border-b border-gray-300 outline-none text-right text-sm w-40 focus:border-blue-500">
+            } @else {
+              <span class="text-sm text-gray-800">
+                {{ companyForm.value[item.key] }}
+              </span>
+            }
+
+          </div>
+
+        }
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ADMIN INFO -->
+  <div class="bg-white rounded-xl shadow-sm border border-[#e6e9ef] p-6 mb-6">
+
+    <h3 class="font-semibold text-gray-700 mb-5">Admin / Owner Information</h3>
+
+    <div class="flex items-center gap-5">
+
+      <img src="https://i.pravatar.cc/100"
+        class="w-14 h-14 rounded-full border border-gray-200">
+
+      <div class="flex-1 grid grid-cols-2 gap-6">
+
+        @for (item of adminInfo; track item.key) {
+
+          <div>
+            <p class="text-gray-400 text-xs mb-1">{{ item.label }}</p>
+
+            @if (isEdit) {
+              <input [formControlName]="item.key"
+                class="border-b border-gray-300 outline-none w-full text-sm focus:border-blue-500">
+            } @else {
+              <p class="text-sm font-medium text-gray-800">
+                {{ companyForm.value[item.key] }}
+              </p>
+            }
+
+          </div>
+
+        }
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ADDITIONAL INFO -->
+  <div class="grid grid-cols-3 gap-6">
+
+    @for (item of additionalInfo; track item.key) {
+
+      <div class="bg-white rounded-xl shadow-sm border border-[#e6e9ef] p-6">
+
+        <h4 class="font-semibold text-gray-700 mb-3">
+          {{ item.label }}
+        </h4>
+
+        @if (isEdit) {
+          <textarea [formControlName]="item.key"
+            rows="3"
+            class="w-full border border-gray-200 rounded-lg p-2 text-sm outline-none focus:border-blue-500 resize-none">
+          </textarea>
+        } @else {
+          <p class="text-sm text-gray-500 leading-relaxed">
+            {{ companyForm.value[item.key] }}
+          </p>
+        }
+
+      </div>
+
+    }
+
+  </div>
+
+</form>
