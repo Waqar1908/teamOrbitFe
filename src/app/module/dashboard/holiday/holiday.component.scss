@@ -1,0 +1,29 @@
+/* Center paginator and give spacing */
+.p-paginator {
+  border-top: 1px solid #e5e7eb;
+  padding: 10px;
+  border-radius: 0 0 12px 12px;
+}
+
+/* Make paginator look like box */
+.p-paginator .p-paginator-pages .p-paginator-page {
+  border-radius: 8px;
+  margin: 0 2px;
+}
+
+/* Header rounded corners */
+.custom-table .p-datatable-thead > tr > th:first-child {
+  border-top-left-radius: 12px;
+}
+
+.custom-table .p-datatable-thead > tr > th:last-child {
+  border-top-right-radius: 12px;
+}
+
+:host ::ng-deep .pi-pencil {
+  color: #3b82f6 !important; /* blue */
+}
+
+:host ::ng-deep .pi-trash {
+  color: #ef4444 !important; /* red */
+}

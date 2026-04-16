@@ -1,0 +1,59 @@
+<div class="flex justify-center items-center min-h-screen bg-gray-100">
+
+  <div class="bg-white shadow-xl rounded-2xl p-6 w-[85%]">
+
+    <h2 class="text-xl font-semibold mb-4 text-gray-700">
+      Holiday List
+    </h2>
+
+    <p-table 
+      [value]="holidays" 
+      [paginator]="true"
+      [rows]="5"
+      class="p-datatable-striped p-datatable-gridlines custom-table"
+      [tableStyle]="{ 'min-width': '100%' }">
+
+      <!-- HEADER -->
+      <ng-template pTemplate="header">
+        <tr class="bg-blue-600 text-white">
+          <th class="p-3 text-left">Holiday</th>
+          <th class="p-3 text-left">Date</th>
+          <th class="p-3 text-left">Day</th>
+          <th class="p-3 text-center">Action</th>
+        </tr>
+      </ng-template>
+
+      <!-- BODY -->
+      <ng-template pTemplate="body" let-holiday>
+        <tr class="hover:bg-gray-100 transition">
+          <td class="p-3 font-medium">{{ holiday.occasion }}</td>
+          <td class="p-3">{{ holiday.date | date:'dd MMM yyyy' }}</td>
+          <td class="p-3">{{ getDay(holiday.date) }}</td>
+
+          <td class="p-3 flex justify-center gap-3">
+
+            <!-- EDIT (BLUE) -->
+            <button 
+              pButton 
+              icon="pi pi-pencil" 
+              class="p-button-rounded p-button-text p-button-primary"
+              (click)="onEdit(holiday)">
+            </button>
+
+            <!-- DELETE (RED) -->
+            <button 
+              pButton 
+              icon="pi pi-trash" 
+              class="p-button-rounded p-button-text p-button-danger"
+              (click)="onDelete(holiday.id)">
+            </button>
+
+          </td>
+        </tr>
+      </ng-template>
+
+    </p-table>
+
+  </div>
+
+</div>

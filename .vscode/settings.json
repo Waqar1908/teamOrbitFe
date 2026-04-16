@@ -1,0 +1,14 @@
+{
+  "tailwindCSS.includeLanguages": {
+    "html": "html",
+    "scss": "scss",
+    "typescript": "html",
+    "css": "css"
+  },
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.experimental.classRegex": [
+    "class\\s*=\\s*\\\"([^\\\"]*)\\\"",
+    "ngClass\\s*=\\s*\\\"([^\\\"]*)\\\"",
+    "className\\s*=\\s*\\\"([^\\\"]*)\\\""
+  ]
+}
