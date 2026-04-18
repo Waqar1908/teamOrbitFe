@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-signup',
@@ -20,6 +21,7 @@ export class SignupComponent {
   agreeTerms = false;
   showPassword = false;
   showConfirm = false;
+  constructor(private _loginService: LoginService) {}
 
   togglePassword() { this.showPassword = !this.showPassword; }
   toggleConfirm()  { this.showConfirm  = !this.showConfirm;  }
@@ -36,5 +38,9 @@ export class SignupComponent {
       companyName: this.companyName,
       phone: this.phone
     });
+  }
+  getLoginInit(data:string){
+    this._loginService.updateUser(data);
+
   }
 }

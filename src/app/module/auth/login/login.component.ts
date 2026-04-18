@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,10 @@ export class LoginComponent {
   showPassword = false;
   loginType: 'user' | 'admin' = 'user';
 
+  constructor( private _loginService :LoginService){
+
+  }
+
   togglePassword() {
     this.showPassword = !this.showPassword;
   }
@@ -24,5 +29,9 @@ export class LoginComponent {
   onLogin() {
     // API integration placeholder
     console.log('Login:', { email: this.email, password: this.password, type: this.loginType });
+  }
+  getSignUpInit(data:string){
+    this._loginService.updateUser(data);
+    
   }
 }

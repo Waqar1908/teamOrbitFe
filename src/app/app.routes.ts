@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
     {
-        path: '',
+        path: 'auth',
         loadComponent: () => import('./module/auth/auth/auth.component').then(m => m.AuthComponent)
     },
     {
@@ -41,5 +41,9 @@ export const routes: Routes = [
 
             }
         ]
+    },
+    {
+        path:'**',
+        redirectTo:'auth'
     }
 ];

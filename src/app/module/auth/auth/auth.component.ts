@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
 import { SignupComponent } from "../signup/signup.component";
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-auth',
@@ -11,5 +12,12 @@ import { SignupComponent } from "../signup/signup.component";
 export class AuthComponent {
 
   isLogin=true
+  constructor(private login:LoginService) {
+    this.login.isSignUpEnable$.subscribe((value)=>{
+      this.isLogin=value==='Login'?true:false
+    })
+
+    
+  }
 
 }
