@@ -2,12 +2,8 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
     {
-        path: '',
-        loadComponent: () => import('./module/auth/login/login.component').then(m => m.LoginComponent)
-    },
-    {
-        path: 'register',
-        loadComponent: () => import('./module/auth/signup/signup.component').then(m => m.SignupComponent)
+        path: 'auth',
+        loadComponent: () => import('./module/auth/auth/auth.component').then(m => m.AuthComponent)
     },
     {
         path: 'dashboard',
@@ -43,5 +39,9 @@ export const routes: Routes = [
                 loadComponent: () => import('./module/dashboard/setting/setting.component').then(m => m.SettingComponent)
             }
         ]
+    },
+    {
+        path:'**',
+        redirectTo:'auth'
     }
 ];

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { LoginComponent } from '../login/login.component';
+import { SignupComponent } from "../signup/signup.component";
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-auth',
@@ -8,4 +10,15 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.css'
 })
-export class AuthComponent {}
+export class AuthComponent {
+
+  isLogin=true
+  constructor(private login:LoginService) {
+    this.login.isSignUpEnable$.subscribe((value)=>{
+      this.isLogin=value==='Login'?true:false
+    })
+
+    
+  }
+
+}
