@@ -1,124 +1,221 @@
 <div class="p-6 bg-gray-50 min-h-screen">
 
-  <!-- Header -->
-  <div class="flex items-center justify-between mb-6">
+  <!-- ========== HEADER ========== -->
+  <div class="flex items-start justify-between mb-5">
     <div>
-      <h2 class="text-2xl font-semibold">Employees</h2>
-      <p class="text-gray-500 text-sm">
-        Manage and view all employee information in one place.
-      </p>
+      <h1 class="text-2xl font-semibold text-gray-800">Employees</h1>
+      <p class="text-sm text-gray-500 mt-1">Manage and view all employee information in one place.</p>
     </div>
-
-    <div class="flex gap-3">
-      <button pButton type="button" label="Export" icon="pi pi-download"
-        class="p-button-outlined"></button>
-
-      <button pButton type="button" label="Add Employee" icon="pi pi-plus"
-        class="p-button-primary"></button>
+    <div class="flex items-center gap-3">
+      <button class="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-xl
+        text-sm font-medium text-gray-700 shadow-sm hover:shadow transition-shadow">
+        <i class="pi pi-download text-gray-500 text-sm"></i>
+        Export
+      </button>
+      <button class="flex items-center gap-2 px-4 py-2.5 bg-blue-500 rounded-xl
+        text-sm font-medium text-white shadow-sm hover:bg-blue-600 transition-colors">
+        <i class="pi pi-plus text-sm"></i>
+        Add Employee
+      </button>
     </div>
   </div>
 
-  <!-- Filters -->
-  <div class="bg-white p-4 rounded-xl shadow-sm mb-4 flex flex-wrap gap-3 items-center">
+  <!-- ========== FILTER ROW ========== -->
+  <div class="bg-white rounded-xl shadow-sm px-4 py-3 mb-4 flex flex-wrap items-center gap-3">
 
-    <span class="p-input-icon-left w-72">
-      <i class="pi pi-search"></i>
-      <input pInputText type="text" placeholder="Search by name, email, or employee ID..." />
-    </span>
+    <!-- Search -->
+    <div class="relative flex-1 min-w-64">
+      <i class="pi pi-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm z-10"></i>
+      <input
+        type="text"
+        [(ngModel)]="searchQuery"
+        (ngModelChange)="onFilterChange()"
+        placeholder="Search by name, email, or employee ID..."
+        class="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-xl text-sm text-gray-700
+          placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-300 bg-white"
+      />
+    </div>
 
-    <p-dropdown [options]="statuses" placeholder="Status: All" class="w-44"></p-dropdown>
+    <!-- Status dropdown -->
+    <div class="relative">
+      <select
+        [(ngModel)]="selectedStatus"
+        (ngModelChange)="onFilterChange()"
+        class="appearance-none pl-3 pr-8 py-2 bg-white border border-gray-200 rounded-xl text-sm
+          text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-200 cursor-pointer">
+        <option *ngFor="let s of statusOptions" [value]="s">
+          {{ s === 'All' ? 'Status: All' : s }}
+        </option>
+      </select>
+      <i class="pi pi-chevron-down absolute right-2.5 top-1/2 -translate-y-1/2 text-gray-400
+        text-xs pointer-events-none"></i>
+    </div>
 
-    <p-dropdown [options]="departments" placeholder="Department: All" class="w-52"></p-dropdown>
+    <!-- Department dropdown -->
+    <div class="relative">
+      <select
+        [(ngModel)]="selectedDepartment"
+        (ngModelChange)="onFilterChange()"
+        class="appearance-none pl-3 pr-8 py-2 bg-white border border-gray-200 rounded-xl text-sm
+          text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-200 cursor-pointer">
+        <option *ngFor="let d of departmentOptions" [value]="d">
+          {{ d === 'All' ? 'Department: All' : d }}
+        </option>
+      </select>
+      <i class="pi pi-chevron-down absolute right-2.5 top-1/2 -translate-y-1/2 text-gray-400
+        text-xs pointer-events-none"></i>
+    </div>
 
-    <button pButton type="button" label="More Filters"
-      icon="pi pi-filter" class="p-button-text"></button>
+    <!-- More Filters -->
+    <button class="flex items-center gap-2 px-3 py-2 bg-white border border-gray-200 rounded-xl
+      text-sm text-gray-600 hover:bg-gray-50 transition-colors">
+      <i class="pi pi-filter text-gray-500 text-sm"></i>
+      More Filters
+      <i class="pi pi-chevron-down text-gray-400 text-xs"></i>
+    </button>
 
-    <button pButton icon="pi pi-calendar" class="p-button-text"></button>
+    <!-- Calendar -->
+    <button class="w-9 h-9 flex items-center justify-center bg-white border border-gray-200 rounded-xl
+      text-gray-500 hover:bg-gray-50 transition-colors">
+      <i class="pi pi-calendar text-sm"></i>
+    </button>
 
   </div>
 
-  <!-- Table -->
+  <!-- ========== TABLE ========== -->
   <div class="bg-white rounded-xl shadow-sm overflow-hidden">
 
-    <p-table
-      [value]="employees"
-      [paginator]="true"
-      [rows]="8"
-      responsiveLayout="scroll"
-      class="p-datatable-sm"
-    >
+    <div class="overflow-x-auto">
+      <table class="w-full">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-100">
+            <th class="px-5 py-3 w-10">
+              <input type="checkbox"
+                class="w-4 h-4 rounded border-gray-300 text-blue-500 cursor-pointer accent-blue-500" />
+            </th>
+            <th class="text-left text-xs font-semibold text-gray-500 px-4 py-3">Employee</th>
+            <th class="text-left text-xs font-semibold text-gray-500 px-4 py-3">Employee ID</th>
+            <th class="text-left text-xs font-semibold text-gray-500 px-4 py-3">Email</th>
+            <th class="text-left text-xs font-semibold text-gray-500 px-4 py-3">Role / Position</th>
+            <th class="text-left text-xs font-semibold text-gray-500 px-4 py-3">Status</th>
+            <th class="text-left text-xs font-semibold text-gray-500 px-4 py-3">Joining Date</th>
+            <th class="text-left text-xs font-semibold text-gray-500 px-4 py-3">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let emp of pagedEmployees"
+            class="border-b border-gray-50 hover:bg-gray-50 transition-colors">
 
-      <!-- Header -->
-      <ng-template pTemplate="header">
-        <tr>
-          <th style="width: 3rem">
-            <p-checkbox></p-checkbox>
-          </th>
-          <th>Employee</th>
-          <th>Employee ID</th>
-          <th>Email</th>
-          <th>Role / Position</th>
-          <th>Status</th>
-          <th>Joining Date</th>
-          <th class="text-center">Actions</th>
-        </tr>
-      </ng-template>
+            <!-- Checkbox -->
+            <td class="px-5 py-3.5">
+              <input type="checkbox"
+                class="w-4 h-4 rounded border-gray-300 cursor-pointer accent-blue-500" />
+            </td>
 
-      <!-- Body -->
-      <ng-template pTemplate="body" let-emp>
-        <tr>
-
-          <td>
-            <p-checkbox></p-checkbox>
-          </td>
-
-          <!-- Employee -->
-          <td>
-            <div class="flex items-center gap-3">
-              <img [src]="emp.avatar" class="w-9 h-9 rounded-full" />
-              <div>
-                <p class="font-medium">{{ emp.name }}</p>
-                <p class="text-xs text-gray-500">{{ emp.department }}</p>
+            <!-- Employee -->
+            <td class="px-4 py-3.5">
+              <div class="flex items-center gap-3">
+                <img [src]="emp.avatar" [alt]="emp.name"
+                  class="w-9 h-9 rounded-full object-cover flex-shrink-0" />
+                <div>
+                  <p class="text-sm font-semibold text-gray-800">{{ emp.name }}</p>
+                  <p class="text-xs text-gray-400">{{ emp.department }}</p>
+                </div>
               </div>
-            </div>
-          </td>
+            </td>
 
-          <td>{{ emp.id }}</td>
-          <td>{{ emp.email }}</td>
+            <!-- ID -->
+            <td class="px-4 py-3.5 text-sm text-gray-600">{{ emp.id }}</td>
 
-          <!-- Role -->
-          <td>
-            <span class="px-3 py-1 rounded-full text-xs font-medium"
-              [ngClass]="roleClass(emp.role)">
-              {{ emp.role }}
-            </span>
-          </td>
+            <!-- Email -->
+            <td class="px-4 py-3.5 text-sm text-gray-600">{{ emp.email }}</td>
 
-          <!-- Status -->
-          <td>
-            <span
-              class="flex items-center gap-2 text-sm font-medium"
-              [ngClass]="emp.status === 'Active' ? 'text-green-600' : 'text-red-500'"
-            >
-              <span class="w-2 h-2 rounded-full"
-                [ngClass]="emp.status === 'Active' ? 'bg-green-500' : 'bg-red-500'">
+            <!-- Role -->
+            <td class="px-4 py-3.5">
+              <span class="inline-block px-3 py-1 rounded-full text-xs font-medium"
+                [ngClass]="roleClass(emp.role)">
+                {{ emp.role }}
               </span>
-              {{ emp.status }}
-            </span>
-          </td>
+            </td>
 
-          <td>{{ emp.joiningDate }}</td>
+            <!-- Status -->
+            <td class="px-4 py-3.5">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full flex-shrink-0"
+                  [ngClass]="emp.status === 'Active' ? 'bg-green-500' : 'bg-red-500'"></span>
+                <span class="text-sm font-medium"
+                  [ngClass]="emp.status === 'Active' ? 'text-green-600' : 'text-red-500'">
+                  {{ emp.status }}
+                </span>
+              </div>
+            </td>
 
-          <!-- Actions -->
-          <td class="text-center">
-            <button pButton icon="pi pi-pencil" class="p-button-text p-button-sm"></button>
-            <button pButton icon="pi pi-trash" class="p-button-text p-button-danger p-button-sm"></button>
-          </td>
+            <!-- Joining Date -->
+            <td class="px-4 py-3.5 text-sm text-gray-600">{{ emp.joiningDate }}</td>
 
-        </tr>
-      </ng-template>
+            <!-- Actions -->
+            <td class="px-4 py-3.5">
+              <div class="flex items-center gap-2">
+                <button class="w-8 h-8 flex items-center justify-center rounded-lg
+                  bg-blue-50 border border-blue-100 text-blue-500
+                  hover:bg-blue-100 transition-colors">
+                  <i class="pi pi-pencil text-xs"></i>
+                </button>
+                <button class="w-8 h-8 flex items-center justify-center rounded-lg
+                  bg-red-50 border border-red-100 text-red-500
+                  hover:bg-red-100 transition-colors">
+                  <i class="pi pi-trash text-xs"></i>
+                </button>
+              </div>
+            </td>
 
-    </p-table>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="flex items-center justify-between px-6 py-3.5 border-t border-gray-100">
+      <span class="text-sm text-gray-500">
+        Showing {{ (page - 1) * pageSize + 1 }} to
+        {{ page * pageSize > filteredEmployees.length ? filteredEmployees.length : page * pageSize }}
+        of {{ filteredEmployees.length }} employees
+      </span>
+      <div class="flex items-center gap-1.5">
+
+        <button (click)="prevPage()" [disabled]="page === 1"
+          class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200
+            text-gray-500 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed">
+          <i class="pi pi-angle-left text-sm"></i>
+        </button>
+
+        <ng-container *ngFor="let p of getPageRange(totalPages)">
+          <span *ngIf="p === -1"
+            class="w-8 h-8 flex items-center justify-center text-gray-400 text-sm">...</span>
+          <button *ngIf="p !== -1"
+            (click)="page = p"
+            class="w-8 h-8 flex items-center justify-center rounded-lg border text-sm transition-colors"
+            [ngClass]="p === page
+              ? 'bg-blue-500 text-white border-blue-500'
+              : 'border-gray-200 text-gray-600 hover:bg-gray-50'">
+            {{ p }}
+          </button>
+        </ng-container>
+
+        <button (click)="nextPage()" [disabled]="page === totalPages"
+          class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200
+            text-gray-500 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed">
+          <i class="pi pi-angle-right text-sm"></i>
+        </button>
+
+        <div class="ml-1 flex items-center gap-1 border border-gray-200 rounded-lg px-2.5 py-1.5
+          bg-white text-sm text-gray-600 cursor-pointer hover:bg-gray-50">
+          10 / page <i class="pi pi-chevron-down text-xs text-gray-400"></i>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 
 </div>
