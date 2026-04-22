@@ -1,269 +1,206 @@
-<div class="auth-wrapper">
+<div class="flex h-screen overflow-hidden font-sans">
 
-  <!-- LEFT PANEL -->
-  <div class="left-panel">
-    <div class="left-content">
-      <!-- Logo -->
-      <div class="brand">
-        <div class="brand-icon">
-          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="20" cy="20" r="20" fill="rgba(255,255,255,0.2)"/>
-            <path d="M12 26 L20 14 L28 26" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="20" cy="12" r="3" fill="white"/>
-          </svg>
-        </div>
-        <span class="brand-name">TeamOrbit</span>
-      </div>
+  <!-- ── LEFT PANEL ── -->
+  <div class="hidden lg:flex flex-col w-5/12 relative overflow-hidden bg-gradient-to-br from-violet-500 via-purple-700 to-indigo-900 px-8 py-8 items-center justify-center">
 
-      <!-- Admin illustration -->
-      <div class="illustration">
-        <svg viewBox="0 0 380 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Background shapes -->
-          <circle cx="190" cy="150" r="130" fill="rgba(255,255,255,0.04)"/>
-          <circle cx="190" cy="150" r="95" fill="rgba(255,255,255,0.05)"/>
+    <!-- decorative circles -->
+    <div class="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-white/5"></div>
+    <div class="absolute -bottom-12 -left-12 w-44 h-44 rounded-full bg-white/5"></div>
 
-          <!-- Large monitor -->
-          <rect x="90" y="60" width="200" height="135" rx="10" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
-          <rect x="98" y="68" width="184" height="119" rx="6" fill="rgba(255,255,255,0.08)"/>
-          <!-- Monitor stand -->
-          <rect x="178" y="195" width="24" height="28" rx="3" fill="rgba(255,255,255,0.25)"/>
-          <rect x="155" y="220" width="70" height="8" rx="4" fill="rgba(255,255,255,0.3)"/>
-
-          <!-- Dashboard on screen -->
-          <rect x="105" y="75" width="80" height="50" rx="4" fill="rgba(255,255,255,0.12)"/>
-          <rect x="108" y="78" width="74" height="8" rx="2" fill="rgba(255,255,255,0.4)"/>
-          <rect x="108" y="90" width="40" height="6" rx="2" fill="rgba(255,255,255,0.25)"/>
-          <rect x="108" y="100" width="55" height="6" rx="2" fill="rgba(255,255,255,0.2)"/>
-          <rect x="108" y="110" width="30" height="6" rx="2" fill="rgba(255,255,255,0.2)"/>
-
-          <!-- Chart on screen right -->
-          <rect x="195" y="75" width="80" height="50" rx="4" fill="rgba(255,255,255,0.12)"/>
-          <polyline points="200,118 210,105 222,112 234,95 246,100 258,88 268,95" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          <path d="M200 118 L210 105 L222 112 L234 95 L246 100 L258 88 L268 95 L268 120 L200 120Z" fill="rgba(255,255,255,0.1)"/>
-
-          <!-- Bottom screen row -->
-          <rect x="105" y="132" width="55" height="14" rx="4" fill="rgba(255,255,255,0.1)"/>
-          <rect x="107" y="135" width="30" height="4" rx="2" fill="rgba(255,255,255,0.4)"/>
-          <rect x="107" y="141" width="50" height="3" rx="1" fill="rgba(255,255,255,0.2)"/>
-
-          <rect x="168" y="132" width="55" height="14" rx="4" fill="rgba(255,255,255,0.1)"/>
-          <rect x="170" y="135" width="30" height="4" rx="2" fill="rgba(255,255,255,0.4)"/>
-          <rect x="170" y="141" width="48" height="3" rx="1" fill="rgba(255,255,255,0.2)"/>
-
-          <rect x="231" y="132" width="50" height="14" rx="4" fill="rgba(255,255,255,0.1)"/>
-          <rect x="233" y="135" width="25" height="4" rx="2" fill="rgba(255,255,255,0.4)"/>
-          <rect x="233" y="141" width="40" height="3" rx="1" fill="rgba(255,255,255,0.2)"/>
-
-          <!-- Admin person (centered below monitor) -->
-          <!-- Head -->
-          <circle cx="190" cy="262" r="18" fill="#FDDCB5"/>
-          <!-- Hair -->
-          <path d="M172 256 Q176 240 190 238 Q204 240 208 256" fill="#2D1B0E"/>
-          <!-- Shoulders / blazer -->
-          <path d="M164 290 Q164 275 190 272 Q216 275 216 290" fill="#1E3A5F" stroke="#1E3A5F" stroke-width="1"/>
-          <!-- Tie/collar -->
-          <rect x="186" y="272" width="8" height="18" fill="white"/>
-          <path d="M186 272 L184 280 L190 285 L196 280 L194 272" fill="#E74C3C"/>
-
-          <!-- Shield badge (admin icon) -->
-          <g transform="translate(48, 220)">
-            <path d="M20 5 L35 11 L35 22 Q35 32 20 38 Q5 32 5 22 L5 11 Z" fill="rgba(255,255,255,0.25)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
-            <polyline points="13,22 18,27 27,16" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          </g>
-
-          <!-- Key icon (right) -->
-          <g transform="translate(290, 215)">
-            <circle cx="18" cy="18" r="10" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
-            <line x1="24" y1="24" x2="36" y2="36" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="32" y1="32" x2="32" y2="38" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="28" y1="35" x2="28" y2="40" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"/>
-          </g>
-
-          <!-- Floating card: Team Members -->
-          <rect x="18" y="60" width="78" height="48" rx="8" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
-          <text x="27" y="78" font-size="7.5" fill="white" font-family="sans-serif" font-weight="600">Team Members</text>
-          <circle cx="30" cy="90" r="6" fill="rgba(255,255,255,0.35)"/>
-          <circle cx="42" cy="90" r="6" fill="rgba(255,255,255,0.35)"/>
-          <circle cx="54" cy="90" r="6" fill="rgba(255,255,255,0.35)"/>
-          <text x="64" y="94" font-size="8" fill="rgba(255,255,255,0.7)" font-family="sans-serif">+12</text>
-
-          <!-- Floating card: Tasks -->
-          <rect x="284" y="55" width="78" height="48" rx="8" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
-          <text x="293" y="73" font-size="7.5" fill="white" font-family="sans-serif" font-weight="600">Tasks Done</text>
-          <text x="293" y="90" font-size="18" fill="white" font-family="sans-serif" font-weight="700">87%</text>
-
-          <!-- Decorative dots -->
-          <circle cx="30" cy="170" r="4" fill="rgba(255,255,255,0.3)"/>
-          <circle cx="350" cy="90" r="5" fill="rgba(255,255,255,0.25)"/>
-          <circle cx="60" cy="30" r="3" fill="rgba(255,255,255,0.2)"/>
-          <circle cx="320" cy="280" r="4" fill="rgba(255,255,255,0.2)"/>
+    <!-- Brand -->
+    <div class="flex items-center gap-2 mb-5 self-start z-10">
+      <div class="w-9 h-9">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="20" fill="rgba(255,255,255,0.2)"/>
+          <path d="M12 26 L20 14 L28 26" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="20" cy="12" r="3" fill="white"/>
         </svg>
       </div>
+      <span class="text-white text-xl font-bold tracking-wide">TeamOrbit</span>
+    </div>
 
-      <h2 class="left-heading">Admin Registration</h2>
-      <p class="left-subtext">Set up your organization account and start managing your team with full control.</p>
+    <!-- Illustration -->
+    <div class="w-full max-w-xs z-10">
+      <svg viewBox="0 0 380 270" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+        <circle cx="190" cy="135" r="118" fill="rgba(255,255,255,0.04)"/>
+        <circle cx="190" cy="135" r="86" fill="rgba(255,255,255,0.05)"/>
+        <rect x="90" y="52" width="200" height="128" rx="10" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+        <rect x="98" y="60" width="184" height="112" rx="6" fill="rgba(255,255,255,0.08)"/>
+        <rect x="178" y="180" width="24" height="24" rx="3" fill="rgba(255,255,255,0.25)"/>
+        <rect x="155" y="202" width="70" height="7" rx="3" fill="rgba(255,255,255,0.3)"/>
+        <rect x="105" y="68" width="78" height="46" rx="4" fill="rgba(255,255,255,0.12)"/>
+        <rect x="108" y="71" width="72" height="7" rx="2" fill="rgba(255,255,255,0.4)"/>
+        <rect x="108" y="82" width="38" height="5" rx="2" fill="rgba(255,255,255,0.25)"/>
+        <rect x="108" y="91" width="52" height="5" rx="2" fill="rgba(255,255,255,0.2)"/>
+        <rect x="108" y="100" width="28" height="5" rx="2" fill="rgba(255,255,255,0.2)"/>
+        <rect x="195" y="68" width="78" height="46" rx="4" fill="rgba(255,255,255,0.12)"/>
+        <polyline points="200,108 210,96 222,103 234,87 246,92 258,80 268,87" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M200 108 L210 96 L222 103 L234 87 L246 92 L258 80 L268 87 L268 110 L200 110Z" fill="rgba(255,255,255,0.08)"/>
+        <rect x="105" y="122" width="52" height="12" rx="3" fill="rgba(255,255,255,0.1)"/>
+        <rect x="107" y="125" width="28" height="3.5" rx="1" fill="rgba(255,255,255,0.4)"/>
+        <rect x="166" y="122" width="52" height="12" rx="3" fill="rgba(255,255,255,0.1)"/>
+        <rect x="168" y="125" width="28" height="3.5" rx="1" fill="rgba(255,255,255,0.4)"/>
+        <rect x="228" y="122" width="48" height="12" rx="3" fill="rgba(255,255,255,0.1)"/>
+        <rect x="230" y="125" width="24" height="3.5" rx="1" fill="rgba(255,255,255,0.4)"/>
+        <circle cx="190" cy="240" r="16" fill="#FDDCB5"/>
+        <path d="M174 235 Q178 220 190 218 Q202 220 206 235" fill="#2D1B0E"/>
+        <path d="M166 265 Q166 252 190 250 Q214 252 214 265" fill="#1E3A5F"/>
+        <rect x="186" y="250" width="8" height="15" fill="white"/>
+        <path d="M186 250 L184 257 L190 262 L196 257 L194 250" fill="#E74C3C"/>
+        <g transform="translate(44,205)">
+          <path d="M20 4 L35 10 L35 20 Q35 30 20 36 Q5 30 5 20 L5 10 Z" fill="rgba(255,255,255,0.22)" stroke="rgba(255,255,255,0.55)" stroke-width="1.5"/>
+          <polyline points="13,20 18,25 27,14" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </g>
+        <g transform="translate(290,200)">
+          <circle cx="16" cy="16" r="9" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+          <line x1="22" y1="22" x2="33" y2="33" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round"/>
+          <line x1="30" y1="30" x2="30" y2="36" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"/>
+          <line x1="26" y1="33" x2="26" y2="38" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"/>
+        </g>
+        <rect x="18" y="50" width="72" height="44" rx="7" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+        <text x="26" y="67" font-size="7" fill="white" font-family="sans-serif" font-weight="600">Team Members</text>
+        <circle cx="28" cy="79" r="5" fill="rgba(255,255,255,0.35)"/>
+        <circle cx="39" cy="79" r="5" fill="rgba(255,255,255,0.35)"/>
+        <circle cx="50" cy="79" r="5" fill="rgba(255,255,255,0.35)"/>
+        <text x="59" y="83" font-size="8" fill="rgba(255,255,255,0.7)" font-family="sans-serif">+12</text>
+        <rect x="284" y="46" width="72" height="44" rx="7" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+        <text x="292" y="63" font-size="7" fill="white" font-family="sans-serif" font-weight="600">Tasks Done</text>
+        <text x="292" y="80" font-size="17" fill="white" font-family="sans-serif" font-weight="700">87%</text>
+        <circle cx="30" cy="158" r="4" fill="rgba(255,255,255,0.3)"/>
+        <circle cx="348" cy="82" r="4" fill="rgba(255,255,255,0.25)"/>
+        <circle cx="56" cy="26" r="3" fill="rgba(255,255,255,0.2)"/>
+      </svg>
+    </div>
 
-      <div class="dots">
-        <span class="dot"></span>
-        <span class="dot active"></span>
-        <span class="dot"></span>
-      </div>
+    <h2 class="text-white text-xl font-bold mt-1 z-10">Admin Registration</h2>
+    <p class="text-purple-100 text-sm text-center mt-1 max-w-xs leading-relaxed z-10">
+      Set up your organization and manage your team with full control.
+    </p>
+
+    <div class="flex gap-2 mt-3 z-10">
+      <span class="dot-inactive"></span>
+      <span class="dot-active"></span>
+      <span class="dot-inactive"></span>
     </div>
   </div>
 
-  <!-- RIGHT PANEL -->
-  <div class="right-panel">
+  <!-- ── RIGHT PANEL ── -->
+  <div class="flex-1 flex flex-col bg-white overflow-hidden">
 
-    <div class="top-nav">
-      <a routerLink="/" class="nav-btn outline">Log in</a>
-      <button class="nav-btn active">Sign Up</button>
+    <!-- Top nav -->
+    <div class="flex justify-end items-center px-8 pt-5 pb-1 gap-3 shrink-0">
+      <a routerLink="/" class="px-5 py-2 rounded-full text-sm font-semibold border-2 border-violet-600 text-violet-600 hover:bg-violet-50 transition-colors">Log in</a>
+      <button class="px-5 py-2 rounded-full text-sm font-semibold bg-violet-600 text-white">Sign Up</button>
     </div>
 
-    <div class="form-container">
-      <h1 class="form-title">Create Admin Account <span class="wave">:)</span></h1>
-      <p class="form-subtitle">
-        Register your organization account to access the full admin dashboard and team management tools.
-      </p>
+    <!-- Form centered -->
+    <div class="flex-1 flex items-center justify-center px-8 pb-2">
+      <div class="w-full max-w-lg">
 
-      <!-- Badge -->
-      <div class="admin-badge">
-        <i class="pi pi-shield"></i>
-        <span>Administrator Account</span>
-      </div>
-
-      <form (ngSubmit)="onRegister()">
-
-        <!-- Row 1: Full Name + Company Name -->
-        <div class="field-row">
-          <div class="field-wrap">
-            <label class="field-label">Full Name</label>
-            <div class="input-group">
-              <i class="pi pi-user input-icon"></i>
-              <input
-                type="text"
-                [(ngModel)]="fullName"
-                name="fullName"
-                placeholder="John Smith"
-                class="field-input"
-                required
-              />
-            </div>
-          </div>
-          <div class="field-wrap">
-            <label class="field-label">Company Name</label>
-            <div class="input-group">
-              <i class="pi pi-building input-icon"></i>
-              <input
-                type="text"
-                [(ngModel)]="companyName"
-                name="companyName"
-                placeholder="Acme Corp"
-                class="field-input"
-                required
-              />
-            </div>
-          </div>
-        </div>
-
-        <!-- Row 2: Email + Phone -->
-        <div class="field-row">
-          <div class="field-wrap">
-            <label class="field-label">Email Address</label>
-            <div class="input-group">
-              <i class="pi pi-envelope input-icon"></i>
-              <input
-                type="email"
-                [(ngModel)]="email"
-                name="email"
-                placeholder="admin&#64;company.com"
-                class="field-input"
-                required
-              />
-              <i class="pi pi-check-circle valid-icon" *ngIf="email.includes('@')"></i>
-            </div>
-          </div>
-          <div class="field-wrap">
-            <label class="field-label">Phone Number</label>
-            <div class="input-group">
-              <i class="pi pi-phone input-icon"></i>
-              <input
-                type="tel"
-                [(ngModel)]="phone"
-                name="phone"
-                placeholder="+1 (555) 000-0000"
-                class="field-input"
-              />
-            </div>
-          </div>
-        </div>
-
-        <!-- Row 3: Password + Confirm Password -->
-        <div class="field-row">
-          <div class="field-wrap">
-            <label class="field-label">Password</label>
-            <div class="input-group">
-              <i class="pi pi-lock input-icon"></i>
-              <input
-                [type]="showPassword ? 'text' : 'password'"
-                [(ngModel)]="password"
-                name="password"
-                placeholder="••••••••••"
-                class="field-input"
-                required
-              />
-              <i
-                class="pi toggle-pw"
-                [class.pi-eye]="!showPassword"
-                [class.pi-eye-slash]="showPassword"
-                (click)="togglePassword()"
-              ></i>
-            </div>
-          </div>
-          <div class="field-wrap">
-            <label class="field-label">Confirm Password</label>
-            <div class="input-group">
-              <i class="pi pi-lock input-icon"></i>
-              <input
-                [type]="showConfirm ? 'text' : 'password'"
-                [(ngModel)]="confirmPassword"
-                name="confirmPassword"
-                placeholder="••••••••••"
-                class="field-input"
-                required
-              />
-              <i
-                class="pi toggle-pw"
-                [class.pi-check-circle]="passwordMatch"
-                [class.pi-eye]="!showConfirm && !passwordMatch"
-                [class.pi-eye-slash]="showConfirm && !passwordMatch"
-                [style.color]="passwordMatch ? '#22c55e' : ''"
-                (click)="!passwordMatch && toggleConfirm()"
-              ></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- Terms -->
-        <div class="terms-row">
-          <label class="terms-label">
-            <input type="checkbox" [(ngModel)]="agreeTerms" name="agreeTerms" class="terms-check" required />
-            <span>I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="terms-link">Privacy Policy</a></span>
-          </label>
-        </div>
-
-        <!-- Register button -->
-        <button type="submit" class="btn-register" [disabled]="!agreeTerms">
-          <i class="pi pi-user-plus"></i>
-          Create Admin Account
-        </button>
-
-        <!-- Login link -->
-        <p class="login-link-text">
-          Already have an account?
-          <a routerLink="/" class="login-link">Sign in here</a>
+        <h1 class="text-2xl font-bold text-slate-800 mb-1">Create Admin Account <span class="text-violet-600">:)</span></h1>
+        <p class="text-sm text-slate-500 leading-relaxed mb-3">
+          Register your organization account to access the admin dashboard and team management tools.
         </p>
 
-      </form>
+        <!-- Admin badge -->
+        <span class="inline-flex items-center gap-2 bg-violet-50 border border-violet-200 rounded-full px-4 py-1.5 text-xs font-semibold text-violet-700 mb-4">
+          <i class="pi pi-shield text-xs"></i> Administrator Account
+        </span>
+
+        <form (ngSubmit)="onRegister()">
+
+          <!-- Row 1 -->
+          <div class="grid grid-cols-2 gap-3 mb-3">
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1">Full Name</label>
+              <div class="relative flex items-center">
+                <i class="pi pi-user absolute left-3 text-slate-400 text-xs"></i>
+                <input type="text" [(ngModel)]="fullName" name="fullName" placeholder="John Smith"
+                  class="w-full pl-8 pr-3 py-2.5 border border-slate-200 rounded-xl text-sm bg-slate-50 text-slate-800 outline-none focus:border-violet-500 focus:bg-white focus:ring-2 focus:ring-violet-100 transition-all" required/>
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1">Company Name</label>
+              <div class="relative flex items-center">
+                <i class="pi pi-building absolute left-3 text-slate-400 text-xs"></i>
+                <input type="text" [(ngModel)]="companyName" name="companyName" placeholder="Acme Corp"
+                  class="w-full pl-8 pr-3 py-2.5 border border-slate-200 rounded-xl text-sm bg-slate-50 text-slate-800 outline-none focus:border-violet-500 focus:bg-white focus:ring-2 focus:ring-violet-100 transition-all" required/>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 2 -->
+          <div class="grid grid-cols-2 gap-3 mb-3">
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1">Email Address</label>
+              <div class="relative flex items-center">
+                <i class="pi pi-envelope absolute left-3 text-slate-400 text-xs"></i>
+                <input type="email" [(ngModel)]="email" name="email" placeholder="admin@company.com"
+                  class="w-full pl-8 pr-8 py-2.5 border border-slate-200 rounded-xl text-sm bg-slate-50 text-slate-800 outline-none focus:border-violet-500 focus:bg-white focus:ring-2 focus:ring-violet-100 transition-all" required/>
+                <i class="pi pi-check-circle absolute right-3 text-green-500 text-xs" *ngIf="email.includes('@')"></i>
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1">Phone Number</label>
+              <div class="relative flex items-center">
+                <i class="pi pi-phone absolute left-3 text-slate-400 text-xs"></i>
+                <input type="tel" [(ngModel)]="phone" name="phone" placeholder="+1 (555) 000-0000"
+                  class="w-full pl-8 pr-3 py-2.5 border border-slate-200 rounded-xl text-sm bg-slate-50 text-slate-800 outline-none focus:border-violet-500 focus:bg-white focus:ring-2 focus:ring-violet-100 transition-all"/>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 3 -->
+          <div class="grid grid-cols-2 gap-3 mb-3">
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1">Password</label>
+              <div class="relative flex items-center">
+                <i class="pi pi-lock absolute left-3 text-slate-400 text-xs"></i>
+                <input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password" name="password" placeholder="••••••••••"
+                  class="w-full pl-8 pr-8 py-2.5 border border-slate-200 rounded-xl text-sm bg-slate-50 text-slate-800 outline-none focus:border-violet-500 focus:bg-white focus:ring-2 focus:ring-violet-100 transition-all" required/>
+                <i class="pi absolute right-3 text-slate-400 text-xs cursor-pointer hover:text-violet-500 transition-colors"
+                  [class.pi-eye]="!showPassword" [class.pi-eye-slash]="showPassword" (click)="togglePassword()"></i>
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1">Confirm Password</label>
+              <div class="relative flex items-center">
+                <i class="pi pi-lock absolute left-3 text-slate-400 text-xs"></i>
+                <input [type]="showConfirm ? 'text' : 'password'" [(ngModel)]="confirmPassword" name="confirmPassword" placeholder="••••••••••"
+                  class="w-full pl-8 pr-8 py-2.5 border border-slate-200 rounded-xl text-sm bg-slate-50 text-slate-800 outline-none focus:border-violet-500 focus:bg-white focus:ring-2 focus:ring-violet-100 transition-all" required/>
+                <i class="pi absolute right-3 text-xs cursor-pointer transition-colors"
+                  [class.pi-check-circle]="passwordMatch"
+                  [class.pi-eye]="!passwordMatch && !showConfirm"
+                  [class.pi-eye-slash]="!passwordMatch && showConfirm"
+                  [class.text-green-500]="passwordMatch"
+                  [class.text-slate-400]="!passwordMatch"
+                  (click)="!passwordMatch && toggleConfirm()"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Terms -->
+          <div class="mb-4">
+            <label class="flex items-start gap-2 text-sm text-slate-600 cursor-pointer">
+              <input type="checkbox" [(ngModel)]="agreeTerms" name="agreeTerms" class="accent-violet-600 w-4 h-4 mt-0.5 shrink-0" required/>
+              <span>I agree to the <a href="#" class="text-violet-600 font-medium hover:underline">Terms of Service</a> and <a href="#" class="text-violet-600 font-medium hover:underline">Privacy Policy</a></span>
+            </label>
+          </div>
+
+          <!-- Register button -->
+          <button type="submit" [disabled]="!agreeTerms"
+            class="w-full py-3 rounded-full bg-gradient-to-r from-violet-500 to-purple-700 text-white text-sm font-semibold flex items-center justify-center gap-2 shadow-md shadow-purple-200 hover:-translate-y-px hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none mb-3">
+            <i class="pi pi-user-plus text-sm"></i>
+            Create Admin Account
+          </button>
+
+          <p class="text-center text-sm text-slate-500">
+            Already have an account?
+            <a routerLink="/" class="text-violet-600 font-semibold hover:underline">Sign in here</a>
+          </p>
+
+        </form>
+      </div>
     </div>
   </div>
 
