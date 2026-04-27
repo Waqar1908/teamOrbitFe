@@ -5,8 +5,8 @@ export const API_CONFIG = {
 
   AUTH: {
     LOGIN: 'api/auth/login',
-    REGISTER: '/auth/register',
-    LOGOUT: '/auth/logout'
+    REGISTER: 'api/auth/register',
+    LOGOUT: 'api/auth/logout'
   },
 
   COMPANY: {

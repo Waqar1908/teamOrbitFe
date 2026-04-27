@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -11,7 +11,7 @@ import { LoginService } from '../../../services/login.service';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent {
   email = '';
   password = '';
   rememberMe = false;
@@ -21,39 +21,28 @@ export class LoginComponent implements OnInit{
   constructor( private _loginService :LoginService){
 
   }
-  ngOnInit(): void {
-      this.getLoginData()
-  }
+  ngOnInit(): void {}
 
   togglePassword() {
     this.showPassword = !this.showPassword;
   }
 
   onLogin() {
-    // API integration placeholder
-    console.log('Login:', { email: this.email, password: this.password, type: this.loginType });
+    const reqBody = {
+      email: this.email,
+      password: this.password
+    };
+    this._loginService.login(reqBody).subscribe({
+      next: (res) => {
+        console.log('Login success:', res);
+      },
+      error: (err) => {
+        console.error('Login failed:', err);
+      }
+    });
   }
-  getSignUpInit(data:string){
+
+  getSignUpInit(data: string) {
     this._loginService.updateUser(data);
-    
-  }
-
-  getLoginData(){
-    const reqBody={
-      email:'test@mail.com',
-      password:'123456'
-    }
-   this._loginService.login(reqBody).subscribe({
-  next: (res) => {
-    console.log('Login success:', res);
-  },
-  error: (err) => {
-    // handle error response here
-    console.error('Login failed:', err);
-  },
-
-});
-
-
   }
 }

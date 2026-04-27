@@ -31,12 +31,20 @@ export class SignupComponent {
   }
 
   onRegister() {
-    // API integration placeholder
-    console.log('Admin Register:', {
+    const reqBody = {
       fullName: this.fullName,
       email: this.email,
       companyName: this.companyName,
-      phone: this.phone
+      phone: this.phone,
+      password: this.password
+    };
+    this._loginService.register(reqBody).subscribe({
+      next: (res) => {
+        console.log('Register success:', res);
+      },
+      error: (err) => {
+        console.error('Register failed:', err);
+      }
     });
   }
   getLoginInit(data:string){

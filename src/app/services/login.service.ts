@@ -18,7 +18,11 @@ export class LoginService {
     this.isSignUp.next(value);
   }
 
-    login(reqBody:any){
-      return this.api.post(API_CONFIG.AUTH.LOGIN,reqBody)
+    login(reqBody: any) {
+      return this.api.post(API_CONFIG.AUTH.LOGIN, reqBody);
+    }
+
+    register(reqBody: any) {
+      return this.api.post(API_CONFIG.AUTH.REGISTER, reqBody);
     }
 }
