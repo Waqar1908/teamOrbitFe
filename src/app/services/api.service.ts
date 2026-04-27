@@ -12,14 +12,19 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  private getHeaders(): HttpHeaders {
-    const token = localStorage.getItem('token');
+ getHeaders(): HttpHeaders {
+  let headers = new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
 
-    return new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: token ? `Bearer ${token}` : ''
-    });
+  const token = localStorage.getItem('token')
+
+  if (token) {
+    headers = headers.set('Authorization', `Bearer ${token}`)
   }
+
+  return headers
+}
 
   // 🔹 GET
   get<T>(endpoint: string): Observable<T> {
