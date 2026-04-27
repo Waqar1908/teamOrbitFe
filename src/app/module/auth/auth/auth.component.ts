@@ -6,7 +6,7 @@ import { LoginService } from '../../../services/login.service';
 @Component({
   selector: 'app-auth',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [LoginComponent,SignupComponent],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.css'
 })
