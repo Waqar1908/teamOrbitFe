@@ -1,1 +1,33 @@
 <router-outlet></router-outlet>
+
+<p-toast position="top-right">
+  <ng-template let-message let-closeFn="closeFn" pTemplate="message">
+
+    <div class="relative flex items-center gap-3 p-3 pr-10 rounded-xl shadow-lg bg-white border-l-4 w-full"
+         [ngClass]="{
+           'border-green-500': message.severity === 'success',
+           'border-red-500': message.severity === 'error'
+         }">
+
+      <i
+        class="pi text-lg"
+        [ngClass]="{
+          'pi-check-circle text-green-500': message.severity === 'success',
+          'pi-times-circle text-red-500': message.severity === 'error'
+        }">
+      </i>
+
+      <div>
+        <div class="font-semibold text-sm">{{ message.summary }}</div>
+        <div class="text-xs text-gray-500">{{ message.detail }}</div>
+      </div>
+
+      <i
+        class="pi pi-times absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-400 hover:text-black text-sm"
+        (click)="closeFn()">
+      </i>
+
+    </div>
+
+  </ng-template>
+</p-toast>

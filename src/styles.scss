@@ -1,2 +1,25 @@
 @import 'tailwindcss';
 @import "primeicons/primeicons.css";
+
+
+.p-toast-message {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.p-toast-message-content {
+  padding: 0 !important;
+}
+
+.p-toast-message-wrapper {
+  width: 100% !important;
+}
+.p-toast-icon-close {
+  display: none !important;
+}
+
+.p-toast-message-icon {
+  display: none !important;
+}
