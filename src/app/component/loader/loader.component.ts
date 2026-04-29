@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LoaderService } from '../../services/loader.service';
 
 @Component({
   selector: 'app-loader',
@@ -10,5 +11,11 @@ import { CommonModule } from '@angular/common';
 })
 export class LoaderComponent {
   @Input() fullscreen = true;
-  @Input() message = 'Loading...';
+  loader$: any;
+
+  constructor( private loaderService: LoaderService){
+  this.loader$ = this.loaderService.getLoder();
+
+  }
+
 }

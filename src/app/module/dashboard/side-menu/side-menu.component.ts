@@ -60,4 +60,9 @@ constructor( private router: Router) {}
     this.router.navigate([item.route]); 
   }
 
+  logout(){
+    sessionStorage.removeItem('token')
+    window.location.reload();
+  }
+
 }

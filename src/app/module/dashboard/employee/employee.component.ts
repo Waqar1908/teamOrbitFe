@@ -1,6 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { LoaderService } from '../../../services/loader.service';
+import { EmpService } from '../../../services/emp.service';
+import { ToasterService } from '../../../services/toaster.service';
+import { PmodelService } from '../../../services/pmodel.service';
+import { DynamicFormComponent } from '../../../component/dynamic-form/dynamic-form.component';
 
 interface Employee {
   name: string;
@@ -19,7 +24,7 @@ interface Employee {
   templateUrl: './employee.component.html',
   styleUrl: './employee.component.scss'
 })
-export class EmployeeComponent {
+export class EmployeeComponent implements OnInit  {
 
   searchQuery = '';
   selectedStatus = 'All';
@@ -50,6 +55,16 @@ export class EmployeeComponent {
     { name: 'Pooja Verma',   department: 'Marketing',   id: 'EMP016', email: 'pooja.verma@teamorbit.com',   role: 'Content Writer',      status: 'Active',   joiningDate: '5 Apr 2024',  avatar: 'https://i.pravatar.cc/40?img=23' },
   ];
 
+  constructor( private _loaderService: LoaderService,
+    private _empService: EmpService,
+    private _toasterService: ToasterService,
+    private _modalService: PmodelService
+  ) {
+
+  }
+
+
+
   get filteredEmployees(): Employee[] {
     const q = this.searchQuery.toLowerCase();
     return this.employees.filter(e => {
@@ -71,6 +86,11 @@ export class EmployeeComponent {
   get totalPages(): number {
     return Math.ceil(this.filteredEmployees.length / this.pageSize) || 1;
   }
+
+  ngOnInit(): void {
+      this.getEmployee();
+  }
+  
 
   getPageRange(total: number): number[] {
     if (total <= 5) return Array.from({ length: total }, (_, i) => i + 1);
@@ -100,4 +120,33 @@ export class EmployeeComponent {
     };
     return map[role] ?? 'bg-gray-100 text-gray-600';
   }
+
+  getEmployee(){
+
+    this._empService.getAllEmp().subscribe({
+      next:(res:any)=>{
+        console.log('Employee List:', res);     
+      },
+      error:(err)=>{
+        console.error('Error fetching employees:', err);
+        this._toasterService.showError('Failed to load employees. Please try again later.');
+      }
+    })
+
+  }
+
+empFormEnable(){
+    this._modalService.open(DynamicFormComponent, {
+  title: ' ',
+  width: '500px',
+  data: {
+    name: '',
+    email: ''
+  }
+}).subscribe(res => {
+  console.log('Form Result:', res);
+});
+console.log("test")
+
+}
 }

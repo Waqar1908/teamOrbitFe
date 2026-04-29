@@ -1,0 +1,19 @@
+<p-dialog 
+  [(visible)]="visible"
+  [modal]="true"
+  [style]="{ width: width }"
+  [baseZIndex]="10000"
+  [dismissableMask]="true"
+  [draggable]="false"
+  [resizable]="false"
+  (onHide)="close()"
+  
+>
+  <ng-template pTemplate="header">
+    {{ title }}
+  </ng-template>
+
+  <ng-template pTemplate="content">
+    <ng-container #container></ng-container>
+  </ng-template>
+</p-dialog>

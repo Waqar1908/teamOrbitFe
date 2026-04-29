@@ -18,7 +18,23 @@ export class LoginService {
     this.isSignUp.next(value);
   }
 
-    login(reqBody:any){
-      return this.api.post(API_CONFIG.AUTH.LOGIN,reqBody)
-    }
+  login(reqBody: any) {
+    return this.api.post(API_CONFIG.AUTH.LOGIN, reqBody)
+  }
+
+  signup(reqBody: any) {
+    return this.api.post(API_CONFIG.AUTH.SIGNUP, reqBody)
+  }
+
+  logout(): void {
+    sessionStorage.removeItem('token');
+  }
+
+  isAuthenticated(): boolean {
+    return !!sessionStorage.getItem('token');
+  }
+
+  getToken(): string | null {
+    return sessionStorage.getItem('token');
+  }
 }

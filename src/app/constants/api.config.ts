@@ -5,8 +5,8 @@ export const API_CONFIG = {
 
   AUTH: {
     LOGIN: 'api/auth/login',
-    REGISTER: '/auth/register',
-    LOGOUT: '/auth/logout'
+    SIGNUP: 'api/auth/signup',
+    LOGOUT: 'api/auth/logout'
   },
 
   COMPANY: {
@@ -18,5 +18,11 @@ export const API_CONFIG = {
     CREATE: '/holidays',
     UPDATE: (id: number) => `/holidays/${id}`,
     DELETE: (id: number) => `/holidays/${id}`
-  }
+  },
+  EMPLOYEE: {
+    GET_ALL: 'api/emp',
+    CREATE: 'api/emp',
+    UPDATE: (id: number) => `api/emp/${id}`,
+    DELETE: (id: number) => `api/emp/${id}`
+  },
 };
